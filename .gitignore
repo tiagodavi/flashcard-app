@@ -1,0 +1,14 @@
+.DS_Store
+
+logs
+*.log
+
+pids
+*.pid
+*.seed
+*.cache
+*.rdb
+*.sublime*
+.idea
+
+/node_modules/*
