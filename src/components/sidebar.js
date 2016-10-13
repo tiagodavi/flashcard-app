@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { addDeck, showAddDeck, hideAddDeck } from '../actions';
+import { Link } from 'react-router';
 
 const mapStateToProps = ({ decks, addingDeck }) => ({
   decks,
@@ -30,7 +31,13 @@ const Sidebar = React.createClass({
           New Deck
         </button>
         <ul>
-          { props.decks.map((deck, i) => <li key={i}> { deck.name } </li>) }
+          { props.decks.map((deck, i) =>
+            <li key={i}>
+              <Link to={ `/decks/${deck.id}` }>
+                { deck.name }
+              </Link>
+            </li>
+          )}
           { props.addingDeck && <input ref='add' onKeyPress={ this.createDeck } /> }
         </ul>
       </div>
