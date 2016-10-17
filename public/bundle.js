@@ -27947,7 +27947,7 @@ run();
 
 store.subscribe(run);
 
-},{"./components/app":263,"./components/visible-cards":265,"./local-store":266,"./reducers":267,"react":248,"react-dom":55,"react-redux":58,"react-router":97,"react-router-redux":64,"redux":254}],263:[function(require,module,exports){
+},{"./components/app":263,"./components/visible-cards":266,"./local-store":267,"./reducers":268,"react":248,"react-dom":55,"react-redux":58,"react-router":97,"react-router-redux":64,"redux":254}],263:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -27961,6 +27961,10 @@ var _react2 = _interopRequireDefault(_react);
 var _sidebar = require('./sidebar');
 
 var _sidebar2 = _interopRequireDefault(_sidebar);
+
+var _toolbar = require('./toolbar');
+
+var _toolbar2 = _interopRequireDefault(_toolbar);
 
 var _reactRedux = require('react-redux');
 
@@ -27980,6 +27984,7 @@ var App = function App(_ref2) {
   return _react2.default.createElement(
     'div',
     { className: 'app' },
+    _react2.default.createElement(_toolbar2.default, { id: id }),
     _react2.default.createElement(_sidebar2.default, null),
     _react2.default.createElement(
       'h1',
@@ -27993,7 +27998,7 @@ var App = function App(_ref2) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
 
-},{"./sidebar":264,"react":248,"react-redux":58}],264:[function(require,module,exports){
+},{"./sidebar":264,"./toolbar":265,"react":248,"react-redux":58}],264:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28030,9 +28035,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     addDeck: function addDeck(name) {
       return dispatch((0, _actions.addDeck)(name));
     },
-    showAddDeck: function showAddDeck() {
-      return dispatch((0, _actions.showAddDeck)());
-    },
     hideAddDeck: function hideAddDeck() {
       return dispatch((0, _actions.hideAddDeck)());
     }
@@ -28048,8 +28050,6 @@ var Sidebar = _react2.default.createClass({
     }
   },
   render: function render() {
-    var _this = this;
-
     var props = this.props;
     return _react2.default.createElement(
       'div',
@@ -28058,13 +28058,6 @@ var Sidebar = _react2.default.createClass({
         'h2',
         null,
         ' All Decks '
-      ),
-      _react2.default.createElement(
-        'button',
-        { onClick: function onClick(evt) {
-            return _this.props.showAddDeck();
-          } },
-        'New Deck'
       ),
       _react2.default.createElement(
         'ul',
@@ -28108,6 +28101,69 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _actions = require('../actions');
+
+var _reactRouter = require('react-router');
+
+var _reactRedux = require('react-redux');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    showAddDeck: function showAddDeck() {
+      return dispatch((0, _actions.showAddDeck)());
+    }
+  };
+};
+
+var Toolbar = function Toolbar(_ref) {
+  var id = _ref.id;
+  var showAddDeck = _ref.showAddDeck;
+
+  var deckTools = id ? _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      _reactRouter.Link,
+      { className: 'btn', to: '/decks/' + id + '/new' },
+      ' \u271A New Card '
+    ),
+    _react2.default.createElement(
+      _reactRouter.Link,
+      { className: 'btn', to: '/decks/' + id + '/study' },
+      ' Study Deck '
+    )
+  ) : null;
+  return _react2.default.createElement(
+    'div',
+    { className: 'toolbar' },
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'button',
+        { onClick: showAddDeck },
+        ' \u271A New Deck '
+      )
+    ),
+    deckTools
+  );
+};
+
+exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Toolbar);
+
+},{"../actions":261,"react":248,"react-redux":58,"react-router":97}],266:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Cards = function Cards() {
@@ -28120,7 +28176,7 @@ var Cards = function Cards() {
 
 exports.default = Cards;
 
-},{"react":248}],266:[function(require,module,exports){
+},{"react":248}],267:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28138,7 +28194,7 @@ var set = exports.set = function set(state, props) {
   localStorage.setItem('state', JSON.stringify(toSave));
 };
 
-},{}],267:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

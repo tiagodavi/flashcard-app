@@ -11,7 +11,6 @@ const mapStateToProps = ({ decks, addingDeck }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addDeck: (name) => dispatch(addDeck(name)),
-  showAddDeck: () => dispatch(showAddDeck()),
   hideAddDeck: () => dispatch(hideAddDeck())
 });
 
@@ -27,9 +26,6 @@ const Sidebar = React.createClass({
     return (
       <div className='sidebar'>
         <h2> All Decks </h2>
-        <button onClick={ (evt) => this.props.showAddDeck() }>
-          New Deck
-        </button>
         <ul>
           { props.decks.map((deck, i) =>
             <li key={i}>
