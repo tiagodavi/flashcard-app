@@ -1,7 +1,10 @@
 import React from 'react';
 
-const Cards = () => (
-  <div> Deck will display here </div>
+const Cards = ({ children }) => (
+  <div>
+    Deck will display here
+    { children }
+  </div>
 );
 
 export default Cards;
