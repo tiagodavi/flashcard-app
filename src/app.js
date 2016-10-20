@@ -18,8 +18,8 @@ const store   = createStore(combineReducers(reducers), localStore.get());
 const history = syncHistoryWithStore(browserHistory, store);
 const routes  = (
   <Route path='/' component={ App }>
-    <Route path='/decks/:id' component={ VisibleCards }>
-      <Route path='/decks/:id/new' component={ NewCardModal } />
+    <Route path='/decks/:deckId' component={ VisibleCards }>
+      <Route path='/decks/:deckId/new' component={ NewCardModal } />
     </Route>
   </Route>
 );

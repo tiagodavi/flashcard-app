@@ -3,16 +3,16 @@ import Sidebar from './sidebar';
 import Toolbar from './toolbar';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (props, { params: { id } }) => ({
-  id
+const mapStateToProps = (props, { params: { deckId } }) => ({
+  deckId
 });
 
-const App = ({ id, children }) => {
+const App = ({ deckId, children }) => {
   return (
     <div className='app'>
-      <Toolbar id={ id } />
+      <Toolbar deckId={ deckId } />
       <Sidebar />
-      <h1>Deck: { id }</h1>
+      <h1>Deck: { deckId }</h1>
       { children }
     </div>
   );

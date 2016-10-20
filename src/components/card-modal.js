@@ -20,7 +20,7 @@ const CardModal = React.createClass({
         <textarea ref='back' defaultValue={ card.back } />
         <p>
           <button onClick={ this.onSave }> Save Card </button>
-          <Link className='btn' to={`/decks/${card.id}`}> Cancel </Link>
+          <Link className='btn' to={`/decks/${card.deckId}`}> Cancel </Link>
           {
             onDelete ?
             <button onClick={ this.onDelete } className='delete'> Delete Card </button>
@@ -41,11 +41,11 @@ const CardModal = React.createClass({
       })
     );
 
-    browserHistory.push(`/decks/${this.props.card.id}`);
+    browserHistory.push(`/decks/${this.props.card.deckId}`);
   },
   onDelete(evt) {
-    this.props.onDelete(this.props.card.id);
-    browserHistory.push(`/decks/${this.props.card.id}`);
+    this.props.onDelete(this.props.card.deckId);
+    browserHistory.push(`/decks/${this.props.card.deckId}`);
   }
 });
 
