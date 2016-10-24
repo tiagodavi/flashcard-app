@@ -44,7 +44,7 @@ const CardModal = React.createClass({
     browserHistory.push(`/decks/${this.props.card.deckId}`);
   },
   onDelete(evt) {
-    this.props.onDelete(this.props.card.deckId);
+    this.props.onDelete(this.props.card.id);
     browserHistory.push(`/decks/${this.props.card.deckId}`);
   }
 });

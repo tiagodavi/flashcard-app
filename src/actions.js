@@ -23,3 +23,17 @@ export const addCard = (card) => {
     data: card
   };
 };
+
+export const updateCard = (card) => {
+  return {
+    type: 'UPDATE_CARD',
+    data: card
+  };
+};
+
+export const deleteCard = (cardId) => {
+  return {
+    type: 'DELETE_CARD',
+    data: cardId
+  };
+};
