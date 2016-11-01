@@ -1,7 +1,7 @@
 export const addDeck = (name) => {
   return {
     type: 'ADD_DECK',
-    data: name
+    data:  name
   };
 };
 
@@ -20,20 +20,27 @@ export const hideAddDeck = () => {
 export const addCard = (card) => {
   return {
     type: 'ADD_CARD',
-    data: card
+    data:  card
   };
 };
 
 export const updateCard = (card) => {
   return {
     type: 'UPDATE_CARD',
-    data: card
+    data:  card
   };
 };
 
 export const deleteCard = (cardId) => {
   return {
     type: 'DELETE_CARD',
-    data: cardId
+    data:  cardId
+  };
+};
+
+export const filterCards = (query) => {
+  return {
+    type: 'FILTER_CARDS',
+    data:  query
   };
 };
