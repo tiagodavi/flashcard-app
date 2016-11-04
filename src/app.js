@@ -4,6 +4,7 @@ import App from './components/app';
 import VisibleCards from './components/visible-cards';
 import NewCardModal from './components/new-card-modal';
 import EditCardModal from './components/edit-card-modal';
+import StudyModal from './components/study-modal';
 
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
@@ -22,6 +23,7 @@ const routes  = (
     <Route path='/decks/:deckId' component={ VisibleCards }>
       <Route path='/decks/:deckId/new' component={ NewCardModal } />
       <Route path='/decks/:deckId/edit/:cardId' component={ EditCardModal } />
+      <Route path='/decks/:deckId/study' component={ StudyModal } />
     </Route>
   </Route>
 );

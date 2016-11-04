@@ -44,3 +44,10 @@ export const filterCards = (query) => {
     data:  query
   };
 };
+
+export const setShowBack = (back) => {
+  return {
+    type: 'SHOW_BACK',
+    data:  back
+  };
+};

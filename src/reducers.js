@@ -41,12 +41,22 @@ export const addingDeck = (state, action) => {
   }
 };
 
-export const cardFilter = (state, action) => {  
+export const cardFilter = (state, action) => {
   switch (action.type) {
     case 'FILTER_CARDS':
       return action.data;
     break;
     default:
      return state || '';
+  }
+};
+
+export const showBack = (state, action) => {
+  switch (action.type) {
+    case 'SHOW_BACK':
+      return action.data || false;
+    break;
+    default:
+      return state || false;
   }
 };
