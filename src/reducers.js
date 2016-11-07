@@ -1,5 +1,8 @@
 export const cards = (state, action) => {
   switch (action.type) {
+    case 'RECEIVE_DATA':
+      return action.data.cards || state;
+    break;
     case 'ADD_CARD':
       let newCard = Object.assign({}, action.data, {
         score: 1,
@@ -24,6 +27,9 @@ export const cards = (state, action) => {
 
 export const decks = (state, action) => {
   switch (action.type) {
+    case 'RECEIVE_DATA':
+      return action.data.decks || state;
+    break;
     case 'ADD_DECK':
       let newDeck = { name: action.data, id: +new Date };
       return state.concat([newDeck]);
